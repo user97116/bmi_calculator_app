@@ -1,4 +1,6 @@
 analyzer:
+  exclude:
+  - my/cache/files
   errors:
     # 'flutter analyze' exits with 1 even on 'info':
     # https://github.com/flutter/flutter/issues/20855
