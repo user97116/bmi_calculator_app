@@ -1,7 +1,23 @@
 analyzer:
-  exclude:
-  - my/cache/files
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
   errors:
-    # 'flutter analyze' exits with 1 even on 'info':
-    # https://github.com/flutter/flutter/issues/20855
+    # treat missing required parameters as a warning (not a hint)
+    missing_required_param: warning
+    # treat missing returns as a warning (not a hint)
+    missing_return: warning
+    # allow having TODO comments in the code
     todo: ignore
+    # allow self-reference to deprecated members (we do this because otherwise we have
+    # to annotate every member in every test, assert, etc, when we deprecate something)
+    deprecated_member_use_from_same_package: ignore
+    # TODO(ianh): https://github.com/flutter/flutter/issues/74381
+    # Clean up existing unnecessary imports, and remove line to ignore.
+    unnecessary_import: ignore
+    # Turned off until null-safe rollout is complete.
+    unnecessary_null_comparison: ignore
+  exclude:
+    - "bin/cache/**"
+      # Ignore protoc generated files
+    - "dev/conductor/lib/proto/*"
